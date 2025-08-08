@@ -11,30 +11,30 @@ export const products: Product[] = [
         id: 2,
         name: 'Samsung Smart TV LED 75',
         description: 'Algun LCD excelente OLED',
-        price: 1000
+        price: 6400
     },
     {
         id: 3,
         name: 'Sony Camara Video',
         description: 'Alguna camara de video para streaming',
-        price: 1000
+        price: 3400
     },
     {
         id: 4,
         name: 'Corsair memorias RAM 16GB DDR5',
         description: 'Memoria RAM optimizada para videojuegos',
-        price: 1000
+        price: 7600
     },
     {
         id: 5,
         name: 'NVIDIA ASUS RTX40000',
         description: 'Tarjeta de video NVidia optimizada para tareas multicore videjuegos en 4K',
-        price: 1000
+        price: 9120
     },
     {
         id: 6,
         name: 'CPU INTEL Corei7',
         description: 'CPU optimizada para tareas multicore',
-        price: 1000
+        price: 4120
     }
 ]
