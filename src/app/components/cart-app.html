@@ -1,13 +1,14 @@
 <h2 class="my-3">Catalogo de productos</h2>
-<catalog [products]="products" (productEventEmmiter)="onAddCart($event)" />
+<div class="row">
+    <div class="col-9">
+        <catalog [products]="products" (productEventEmmiter)="onAddCart($event)" />
+    </div>
 
-@if(items.length > 0){
-    <cart 
-    [items]="items" 
-    (idProductEventEmitter)="onDeleteCart($event)"
-    [total]="total" 
-    />
-}@else {
-    <div class="alert alert-warning">No hay elementos en el carrito!</div>
-}
-
+    <div class="col-3">
+        @if(items.length > 0){
+        <cart [items]="items" (idProductEventEmitter)="onDeleteCart($event)" [total]="total" />
+        }@else {
+        <div class="alert alert-warning">No hay elementos en el carrito!</div>
+        }
+    </div>
+</div>
