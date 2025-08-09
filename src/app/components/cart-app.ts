@@ -18,13 +18,17 @@ export class CartApp implements OnInit{
 
   items: CartItem[] = [];
 
+  total: number = 0;
+
   constructor(private service: Products){}
 
   ngOnInit(): void {
       this.products = this.service.findAll();
+      this.items = JSON.parse(sessionStorage.getItem('cart')!) || [] ;
+      this.calculateTotal();
   }
 
-  onAddCart(product: Product){
+  onAddCart(product: Product): void {
     const hasItem = this.items.find( item => {
       return item.product.id === product.id;
     });
@@ -42,6 +46,23 @@ export class CartApp implements OnInit{
     }else {
       this.items = [... this.items, { product:  { ...product }, quantity: 1 }];
     }
-    
+
+    this.calculateTotal();
+    this.saveSession();
+  }
+
+  onDeleteCart(id: number): void{
+    this.items = this.items.filter(item => item.product.id !== id );
+
+    this.calculateTotal();
+    this.saveSession();
+  }
+
+  calculateTotal(): void{
+    this.total = this.items.reduce( (accumulator, item) => accumulator + item.quantity * item.product.price, 0);
+  }
+
+  saveSession(): void{
+    sessionStorage.setItem('cart', JSON.stringify(this.items));
   }
 }
